@@ -14,11 +14,10 @@ namespace InvestigationGame
         {
             Weakness = ListNameSensor(Sensors);
         }
-        public string Activate(Sensor[] sensor)
+        public string Activate(List<Sensor> sensor)
         {
             int Mach = 0;
-            Console.WriteLine(sensor[0].Name());
-            for (int i = 0; i < sensor.Length; i++)
+            for (int i = 0; i < sensor.Count; i++)
             {
                 if (sensor[i] != null)
                     if (Weakness[i].Equals(sensor[i].Name()))

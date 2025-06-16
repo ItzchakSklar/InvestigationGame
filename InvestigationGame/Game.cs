@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -16,22 +17,32 @@ namespace InvestigationGame
             Console.WriteLine("Welcome to the investigation game!");
             Console.WriteLine("Investigation begining...");
             Console.WriteLine("terrorist is waiting in room 9");
-            List<Sensor[]> sencors = new List<Sensor[]>();
-            sencors.Add(new Sensor[2]);
+            List<Sensor> sensors = new List<Sensor>();
+            sensors.Add(null);
+            sensors.Add(null); 
+            if (Game.Check)
+                Print.PrintList(factory.ListIranAgant[0].Weakness);
             while (factory.ListIranAgant.Count > 0)
             {
                 
                 Console.WriteLine("In which location would you like to set the sensor? (0 - 1)");
                 int Choice = ChoiceIntValidat(0, 1);
                 if (Choice == -1) continue;
-                Console.WriteLine("");
                 Console.WriteLine("Available sensor types");
                 Console.WriteLine("types: basic thermal");
                 string ChoiceType = ChoicestringAvlidat(new string[] { "basic","thermal"});
                 if (ChoiceType == "problem") { continue; }
-                sencors[0][Choice] = new Sensor(ChoiceType);
-                string state = factory.ListIranAgant[0].Activate(sencors[0]);
+                sensors[Choice] = new Sensor(ChoiceType);
+                if (Game.Check)
+                {
+                    Console.Write("This is sensors: ");
+                    Print.PrintList(sensors);
+                    Console.Write("This is wiknnes: ");
+                    Print.PrintList(factory.ListIranAgant[0].Weakness);
+                }
+                string state = factory.ListIranAgant[0].Activate(sensors);
                 Console.WriteLine(state + " matched");
+                ChackAgaint(state, factory.ListIranAgant);
             }
             Console.WriteLine("You win");
         }
@@ -65,5 +76,11 @@ namespace InvestigationGame
             }
             return Choice;
         }
+        public static void ChackAgaint(string state,List<IranianAgint>  ListSensor)
+        {
+            if (state[0] == state[2])
+                ListSensor.RemoveAt(ListSensor.Count - 1);
+        }
+        public static bool Check = false;
     }
 }

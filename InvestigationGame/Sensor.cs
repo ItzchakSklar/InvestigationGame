@@ -14,7 +14,10 @@ namespace InvestigationGame
         public Sensor(string Type = null)
         {
             Random rand =  new Random();
-            name = AvaibleSensors[rand.Next(0, AvaibleSensors.Length - 1)];
+            if (Type == null&&!AvaibleSensors.Contains(Type))  
+                name = AvaibleSensors[rand.Next(0, AvaibleSensors.Length)];
+            else
+                name = Type;
         }
         public int Activate()
         {
