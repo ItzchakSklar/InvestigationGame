@@ -15,18 +15,20 @@ namespace InvestigationGame
             Weakness = ListNameSensor(Sensors);
         }
         public string Activate(Sensor[] sensor)
-       {
+        {
             int Mach = 0;
+            Console.WriteLine(sensor[0].Name());
             for (int i = 0; i < sensor.Length; i++)
             {
-                if (Weakness[i].Equals(sensor[i].Name()))
-                    Mach++;
+                if (sensor[i] != null)
+                    if (Weakness[i].Equals(sensor[i].Name()))
+                        Mach++;
             }
             return $"{Mach}/{Weakness.Count}";
-       }
+        }
         public List<string> ListNameSensor(int sensor)
         {
-            List<string> ListNameSensor= new List<string>();
+            List<string> ListNameSensor = new List<string>();
             for (int i = 0; i < sensor; i++)
                 ListNameSensor.Add(new Sensor().Name());
             return ListNameSensor;
