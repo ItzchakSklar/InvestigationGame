@@ -17,7 +17,7 @@ namespace InvestigationGame
             Console.WriteLine("Welcome to the investigation game!");
             Console.WriteLine("Investigation begining...");
             Console.WriteLine("terrorist is waiting in room 9");
-            List<Sensor> sensors = new List<Sensor>();
+            List<SensorBasic> sensors = new List<SensorBasic>();
             sensors.Add(null);
             sensors.Add(null); 
             if (Game.Check)
@@ -29,10 +29,11 @@ namespace InvestigationGame
                 int Choice = ChoiceIntValidat(0, 1);
                 if (Choice == -1) continue;
                 Console.WriteLine("Available sensor types");
-                Console.WriteLine("types: basic thermal");
-                string ChoiceType = ChoicestringAvlidat(new string[] { "basic","thermal"});
+                Console.Write("types: ");
+                Print.PrintList(ListAvilbleSensor);
+                string ChoiceType = ChoicestringAvlidat(ListAvilbleSensor);
                 if (ChoiceType == "problem") { continue; }
-                sensors[Choice] = new Sensor(ChoiceType);
+                sensors[Choice] = Factory.CreatSensor(ChoiceType);
                 if (Game.Check)
                 {
                     Console.Write("This is sensors: ");
@@ -81,6 +82,7 @@ namespace InvestigationGame
             if (state[0] == state[2])
                 ListSensor.RemoveAt(ListSensor.Count - 1);
         }
-        public static bool Check = false;
+        public static string[] ListAvilbleSensor = new string[7] { "basic", "thermal", "pulse", "motion", "magnetic", "singal", "light" };
+        public static bool Check = true;
     }
 }

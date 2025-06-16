@@ -13,22 +13,32 @@ namespace InvestigationGame
             foreach (string item in list) Console.Write(item +", ");
             Console.WriteLine();
         }
-        public static void PrintList(Sensor[] list)
+        public static void PrintList(SensorBasic[] list)
         {
-            foreach (Sensor item in list) 
+            foreach (SensorBasic item in list) 
             {
                 if (item != null)
-                    Console.Write(item.Name() + ", ");
+                    Console.Write(item + ", ");
                 
             }
             Console.WriteLine();
         }
-        public static void PrintList(List<Sensor> list)
+        public static void PrintList(List<SensorBasic> list)
         {
-            foreach (Sensor item in list)
+            foreach (SensorBasic item in list)
             {
                 if (item != null)
-                    Console.Write(item.Name() + ", ");                
+                    Console.Write(item + ", ");                
+            }
+            Console.WriteLine();
+
+        }
+        public static void PrintList(string[] list)
+        {
+            foreach (string item in list)
+            {
+                if (item != null)
+                    Console.Write(item + ", ");
             }
             Console.WriteLine();
 

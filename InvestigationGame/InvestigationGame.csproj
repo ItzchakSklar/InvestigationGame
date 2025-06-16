@@ -45,11 +45,16 @@
   <ItemGroup>
     <Compile Include="Factory.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="IranianAgint.cs" />
+    <Compile Include="Agint\IranianAgint.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sensor.cs" />
+    <Compile Include="Sensors\SensorLight.cs" />
+    <Compile Include="Sensors\SensorBasic.cs" />
+    <Compile Include="Sensors\SensorMagnetic.cs" />
+    <Compile Include="Sensors\SensorPulseMotion.cs" />
+    <Compile Include="Sensors\SensorSingal.cs" />
+    <Compile Include="Sensors\SensorThermal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
