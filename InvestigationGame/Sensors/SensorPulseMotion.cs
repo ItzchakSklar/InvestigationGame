@@ -8,10 +8,10 @@ namespace InvestigationGame
 {
     internal class SensorPulseMotion : SensorBasic
     {
-        private static string[] PossibleNames = { "pulse", "motion" };  
+        //private static string[] PossibleNames = { "pulse", "motion" };  
         string SensorName;
         int activate = 0;
-        int MaxActivate = 0;
+        int MaxActivate = 3;
         public SensorPulseMotion(string sensorName)
         {
             SensorName = sensorName;

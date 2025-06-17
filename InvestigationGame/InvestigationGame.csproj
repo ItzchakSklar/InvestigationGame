@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agint\OrganizationLeader.cs" />
+    <Compile Include="Agint\SeniorCommonder.cs" />
+    <Compile Include="Agint\SquadLeader.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Agint\IranianAgint.cs" />

@@ -30,8 +30,8 @@ namespace InvestigationGame
                 if (Choice == -1) continue;
                 Console.WriteLine("Available sensor types");
                 Console.Write("types: ");
-                Print.PrintList(ListAvilbleSensor);
-                string ChoiceType = ChoicestringAvlidat(ListAvilbleSensor);
+                Print.PrintList(Factory.ListAvilbleSensor);
+                string ChoiceType = ChoicestringAvlidat(Factory.ListAvilbleSensor);
                 if (ChoiceType == "problem") { continue; }
                 sensors[Choice] = Factory.CreatSensor(ChoiceType);
                 if (Game.Check)
@@ -82,7 +82,7 @@ namespace InvestigationGame
             if (state[0] == state[2])
                 ListSensor.RemoveAt(ListSensor.Count - 1);
         }
-        public static string[] ListAvilbleSensor = new string[7] { "basic", "thermal", "pulse", "motion", "magnetic", "singal", "light" };
+        
         public static bool Check = true;
     }
 }

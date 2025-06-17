@@ -10,6 +10,7 @@ namespace InvestigationGame
     {
         private static Factory Instans = null;
         public List<IranianAgint> ListIranAgant = new List<IranianAgint>();
+        Random random = new Random();
         private Factory() { }
         public static Factory GetInstans()
         {
@@ -19,7 +20,31 @@ namespace InvestigationGame
         }
         public void creatIranianAgint()
         {
-            ListIranAgant.Add(new IranianAgint());
+            int RandName = random.Next(0, AvailbleNames.Length);
+            int RandLevel = random.Next(0, 5);
+            int RandOrgnization = random.Next(0, AvailbleOrgniztion.Length);
+            ListIranAgant.Add(new IranianAgint(ListSensor(2,ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
+        }
+        public void creatSquadLeader()
+        {
+            int RandName = random.Next(0, AvailbleNames.Length);
+            int RandLevel = random.Next(0, 5);
+            int RandOrgnization = random.Next(0, AvailbleOrgniztion.Length);
+            ListIranAgant.Add(new IranianAgint(ListSensor(4, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
+        }
+        public void creatSeniorCommonder()
+        {
+            int RandName = random.Next(0, AvailbleNames.Length);
+            int RandLevel = random.Next(0, 5);
+            int RandOrgnization = random.Next(0, AvailbleOrgniztion.Length);
+            ListIranAgant.Add(new IranianAgint(ListSensor(6, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
+        }
+        public void creatOrganizationLeader()
+        {
+            int RandName = random.Next(0, AvailbleNames.Length);
+            int RandLevel = random.Next(0, 5);
+            int RandOrgnization = random.Next(0, AvailbleOrgniztion.Length);
+            ListIranAgant.Add(new IranianAgint(ListSensor(8, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
         }
         public static SensorBasic CreatSensor(string Type)
         {
@@ -46,6 +71,39 @@ namespace InvestigationGame
         public void StartGame()
         {
             creatIranianAgint();
+            for (int i = 0; i < 2; i++)
+            {
+                int rand = random.Next(0, 3);
+                switch (rand)
+                {
+                    case (0):
+                        creatIranianAgint();
+                        break;
+                    case (1):
+                        creatSquadLeader();
+                        break;
+                    case (2):
+                        creatSeniorCommonder();
+                        break;
+                    case (3):
+                        creatOrganizationLeader();
+                        break;
+                }
+            }
         }
+        public SensorBasic[] ListSensor(int sensor, string[] ListAvilbleSensor)
+        {
+            SensorBasic[] ListSensor = new SensorBasic[sensor];
+            int rand;
+            for (int i = 0; i < sensor; i++)
+            {
+                rand = random.Next(0, ListAvilbleSensor.Length);
+                ListSensor[i] = CreatSensor(ListAvilbleSensor[rand]);
+            }
+            return ListSensor;
+        }
+        public static string[] AvailbleNames = {"Ahmad", "Mohammad", "Ali", "Yousef", "Omar", "Samir", "Amir", "Abdallah", "Karim", "Munir","Fatma", "Hanan", "Noor", "Lina", "Rana", "Sabreen", "Rasha", "Najah", "Abeer", "Dima"};
+        public static string[] AvailbleOrgniztion = {"Hamas","Hezbollah","Al-Qaeda","ISIS"};
+        public static string[] ListAvilbleSensor = new string[7] { "basic", "thermal", "pulse", "motion", "magnetic", "singal", "light" };
     }
 }

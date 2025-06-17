@@ -9,34 +9,43 @@ namespace InvestigationGame
 {
     internal class IranianAgint
     {
-        public List<string> Weakness = new List<string>();
-        public IranianAgint(int Sensors = 2)
+        public SensorBasic[] Weakness;
+        public string Name;
+        public int Level;
+        string Orgnization;
+        public IranianAgint(SensorBasic[] ListSensor,string name,int level,string orgnization)
         {
-            Weakness = ListNameSensor(Sensors);
+            Weakness = ListSensor;
+            Name = name;
+            Level = level;
+            Orgnization = orgnization;
         }
-        public string Activate(List<SensorBasic> sensor)
+        public virtual string Activate(List<SensorBasic> sensor)
         {
             int Mach = 0;
+            string remuv = "n";
             for (int i = 0; i < sensor.Count; i++)
             {
                 if (sensor[i] != null)
-                    if (Weakness[i].Equals(sensor[i].ToString()))
+                {
+                    if (Weakness[i].ToString().Equals(sensor[i].ToString()))
                         Mach++;
-                
+                    if (sensor[i] is SensorPulseMotion)
+                    { 
+                        int[] activ = sensor[i].Activate();
+                        if (activ[0] == activ[1])
+                        {
+                            remuv += i;
+                        }
+                    }
+                }
             }
-            return $"{Mach}/{Weakness.Count}";
+            return $"{Mach}/{Weakness.Length}"+remuv;
         }
-        public List<string> ListNameSensor(int sensor)
+        public override string ToString()
         {
-            List<string> ListNameSensor = new List<string>();
-            Random random = new Random();
-            int rand;
-            for (int i = 0; i < sensor; i++)
-            {
-                rand = random.Next(0, Game.ListAvilbleSensor.Length);
-                ListNameSensor.Add(Game.ListAvilbleSensor[rand]);
-            }
-            return ListNameSensor;
+            return "foots soldier";
         }
+        
     }
 }

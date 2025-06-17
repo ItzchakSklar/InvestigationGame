@@ -9,6 +9,9 @@ namespace InvestigationGame
     internal class SensorBasic
     {
         public override string ToString() => "basic"; 
-
+        public virtual int[] Activate()
+        {
+            return new int[] { 0, 1 };
+        }
     }
 }
