@@ -28,7 +28,8 @@ namespace InvestigationGame
             foreach (SensorBasic item in list)
             {
                 if (item != null)
-                    Console.Write(item + ", ");                
+                    Console.Write(item + ", ");
+                else Console.Write("null, ");
             }
             Console.WriteLine();
 
@@ -39,6 +40,15 @@ namespace InvestigationGame
             {
                 if (item != null)
                     Console.Write(item + ", ");
+            }
+            Console.WriteLine();
+
+        }
+        public static void PrintList(int[] list)
+        {
+            foreach (int item in list)
+            { 
+                Console.Write(item + ", ");
             }
             Console.WriteLine();
 

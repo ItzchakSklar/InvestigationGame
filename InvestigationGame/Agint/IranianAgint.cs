@@ -23,24 +23,21 @@ namespace InvestigationGame
         public virtual string Activate(List<SensorBasic> sensor)
         {
             int Mach = 0;
-            string remuv = "n";
-            for (int i = 0; i < sensor.Count; i++)
+            for (int i = 0; i < Weakness.Length; i++)
             {
                 if (sensor[i] != null)
                 {
-                    if (Weakness[i].ToString().Equals(sensor[i].ToString()))
-                        Mach++;
-                    if (sensor[i] is SensorPulseMotion)
-                    { 
-                        int[] activ = sensor[i].Activate();
-                        if (activ[0] == activ[1])
-                        {
-                            remuv += i;
-                        }
-                    }
+                   if (Weakness[i].ToString().Equals(sensor[i].ToString()))
+                       Mach++;
+                   int[] activ = sensor[i].Activate();
+                   if (Game.Check) { Console.WriteLine($"{i} {sensor[i].ToString()} activate"); Print.PrintList(activ); }
+                   if (activ[0] == activ[1])
+                   {
+                        sensor[i] = null;
+                   }
                 }
             }
-            return $"{Mach}/{Weakness.Length}"+remuv;
+            return $"{Mach}/{Weakness.Length}";
         }
         public override string ToString()
         {

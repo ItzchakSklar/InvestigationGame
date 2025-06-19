@@ -17,9 +17,9 @@ namespace InvestigationGame
             SensorName = sensorName;
         }
         public override string ToString() { return SensorName; }
-        public int[] Activate()
+        public override int[] Activate()
         {
-            ++activate; 
+            activate++;
             return new int[2] { activate, MaxActivate };
         }
     }

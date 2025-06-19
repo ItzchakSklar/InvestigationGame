@@ -30,21 +30,21 @@ namespace InvestigationGame
             int RandName = random.Next(0, AvailbleNames.Length);
             int RandLevel = random.Next(0, 5);
             int RandOrgnization = random.Next(0, AvailbleOrgniztion.Length);
-            ListIranAgant.Add(new IranianAgint(ListSensor(4, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
+            ListIranAgant.Add(new SquadLeader(ListSensor(4, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
         }
         public void creatSeniorCommonder()
         {
             int RandName = random.Next(0, AvailbleNames.Length);
             int RandLevel = random.Next(0, 5);
             int RandOrgnization = random.Next(0, AvailbleOrgniztion.Length);
-            ListIranAgant.Add(new IranianAgint(ListSensor(6, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
+            ListIranAgant.Add(new SeniorCommonder(ListSensor(6, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
         }
         public void creatOrganizationLeader()
         {
             int RandName = random.Next(0, AvailbleNames.Length);
             int RandLevel = random.Next(0, 5);
             int RandOrgnization = random.Next(0, AvailbleOrgniztion.Length);
-            ListIranAgant.Add(new IranianAgint(ListSensor(8, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
+            ListIranAgant.Add(new OrganizationLeader(ListSensor(8, ListAvilbleSensor), AvailbleNames[RandName], RandLevel, AvailbleOrgniztion[RandOrgnization]));
         }
         public static SensorBasic CreatSensor(string Type)
         {
@@ -73,7 +73,7 @@ namespace InvestigationGame
             creatIranianAgint();
             for (int i = 0; i < 2; i++)
             {
-                int rand = random.Next(0, 3);
+                int rand = random.Next(0, 4);
                 switch (rand)
                 {
                     case (0):
